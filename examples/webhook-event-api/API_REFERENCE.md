@@ -2,7 +2,10 @@
 
 Detailed API reference for the Webhook Receiver + Event Processing API.
 
-This document describes the available API endpoints, request formats, response shapes, filtering options, and standard error response format.
+This document describes the routes recorded at the version 0.2.0 portfolio
+checkpoint, including request formats, response shapes, filters, and errors.
+The runnable backend source is not included in this documentation sample, so
+no routes beyond the recorded endpoint inventory are documented here.
 
 [Back to the project overview](README.md)
 
@@ -14,13 +17,15 @@ This document describes the available API endpoints, request formats, response s
 http://localhost:3000/api/v1
 ```
 
-Unless otherwise noted, endpoint paths in this document are shown relative to the base API version:
+The API origin and version prefix are:
 
 ```text
-/api/v1
+Origin: http://localhost:3000
+Version prefix: /api/v1
 ```
 
-The root application health route is available at:
+Endpoint headings, examples, and tables below use complete request paths,
+including `/api/v1`. The unversioned application route is:
 
 ```text
 http://localhost:3000/
@@ -30,7 +35,8 @@ http://localhost:3000/
 
 ## Response Format
 
-API responses return JSON.
+Versioned API responses return JSON. The unversioned `GET /` route returns the
+application's HTML interface.
 
 Timestamps are returned as ISO 8601 date strings.
 
@@ -50,7 +56,7 @@ Validation and HTTP errors use a consistent response shape.
 {
   "statusCode": 400,
   "timestamp": "2026-06-08T00:00:00.000Z",
-  "path": "/events",
+  "path": "/api/v1/events",
   "method": "POST",
   "message": "Validation failed",
   "error": "BadRequest"
@@ -70,23 +76,20 @@ Validation and HTTP errors use a consistent response shape.
 
 ---
 
-## Health Checks
+## Application and Health Routes
 
 ### `GET /`
 
-Returns a basic application root response.
-
-This route is available outside the base API version.
-
-### Root Example Response
+Serves the application HTML interface. This route is outside the API version
+prefix and is not a JSON health endpoint.
 
 ```text
-Webhook Receiver API is running
+Content-Type: text/html
 ```
 
 ---
 
-### `GET /health`
+### `GET /api/v1/health`
 
 Returns a basic API health check response.
 
@@ -108,7 +111,7 @@ Event records represent webhook-style payloads received by the API.
 
 ## Create Event
 
-### `POST /events`
+### `POST /api/v1/events`
 
 Creates a new event record.
 
@@ -150,7 +153,7 @@ Creates a new event record.
 
 ## List Events
 
-### `GET /events`
+### `GET /api/v1/events`
 
 Returns a list of event records.
 
@@ -165,11 +168,11 @@ Returns a list of event records.
 ### List Events Example Requests
 
 ```text
-GET /events
-GET /events?source=stripe
-GET /events?eventType=payment.created
-GET /events?processed=false
-GET /events?source=stripe&processed=true
+GET /api/v1/events
+GET /api/v1/events?source=stripe
+GET /api/v1/events?eventType=payment.created
+GET /api/v1/events?processed=false
+GET /api/v1/events?source=stripe&processed=true
 ```
 
 ### List Events Example Response
@@ -194,14 +197,14 @@ GET /events?source=stripe&processed=true
 
 ## Event Summary
 
-### `GET /events/summary`
+### `GET /api/v1/events/summary`
 
 Returns aggregate event statistics.
 
 ### Event Summary Example Request
 
 ```text
-GET /events/summary
+GET /api/v1/events/summary
 ```
 
 ### Event Summary Example Response
@@ -224,7 +227,7 @@ GET /events/summary
 
 ## Get Event by ID
 
-### `GET /events/:id`
+### `GET /api/v1/events/:id`
 
 Returns a single event record by ID.
 
@@ -237,7 +240,7 @@ Returns a single event record by ID.
 ### Get Event by ID Example Request
 
 ```text
-GET /events/event-id
+GET /api/v1/events/event-id
 ```
 
 ### Get Event by ID Example Response
@@ -262,7 +265,7 @@ GET /events/event-id
 {
   "statusCode": 404,
   "timestamp": "2026-06-08T00:00:00.000Z",
-  "path": "/events/event-id",
+  "path": "/api/v1/events/event-id",
   "method": "GET",
   "message": "Event with ID event-id not found",
   "error": "NotFound"
@@ -273,7 +276,7 @@ GET /events/event-id
 
 ## Mark Event as Processed
 
-### `PATCH /events/:id/processed`
+### `PATCH /api/v1/events/:id/processed`
 
 Marks an event as processed.
 
@@ -286,7 +289,7 @@ Marks an event as processed.
 ### Mark Event as Processed Example Request
 
 ```text
-PATCH /events/event-id/processed
+PATCH /api/v1/events/event-id/processed
 ```
 
 ### Mark Event as Processed Example Response
@@ -311,7 +314,7 @@ PATCH /events/event-id/processed
 {
   "statusCode": 404,
   "timestamp": "2026-06-08T00:00:00.000Z",
-  "path": "/events/event-id/processed",
+  "path": "/api/v1/events/event-id/processed",
   "method": "PATCH",
   "message": "Event with ID event-id not found",
   "error": "NotFound"
@@ -322,7 +325,7 @@ PATCH /events/event-id/processed
 
 ## Delete Event
 
-### `DELETE /events/:id`
+### `DELETE /api/v1/events/:id`
 
 Deletes an existing event record by ID.
 
@@ -335,7 +338,7 @@ Deletes an existing event record by ID.
 ### Delete Event Example Request
 
 ```text
-DELETE /events/event-id
+DELETE /api/v1/events/event-id
 ```
 
 ### Delete Event Example Response
@@ -360,7 +363,7 @@ DELETE /events/event-id
 {
   "statusCode": 404,
   "timestamp": "2026-06-08T00:00:00.000Z",
-  "path": "/events/event-id",
+  "path": "/api/v1/events/event-id",
   "method": "DELETE",
   "message": "Event with ID event-id not found",
   "error": "NotFound"
@@ -387,15 +390,16 @@ DELETE /events/event-id
 
 ## Current Endpoint Summary
 
-| Method   | Endpoint                | Description                           |
-| -------- | ----------------------- | ------------------------------------- |
-| `GET`    | `/`                     | Basic application root response.      |
-| `POST`   | `/events`               | Creates a new event.                  |
-| `GET`    | `/events`               | Lists events with optional filtering. |
-| `GET`    | `/events/summary`       | Returns event summary statistics.     |
-| `GET`    | `/events/:id`           | Returns a single event by ID.         |
-| `PATCH`  | `/events/:id/processed` | Marks an event as processed.          |
-| `DELETE` | `/events/:id`           | Deletes an event by ID.               |
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| `GET` | `/` | Serves the application HTML interface. |
+| `GET` | `/api/v1/health` | Returns API health status. |
+| `POST` | `/api/v1/events` | Creates a new event. |
+| `GET` | `/api/v1/events` | Lists events with optional filtering. |
+| `GET` | `/api/v1/events/summary` | Returns event summary statistics. |
+| `GET` | `/api/v1/events/:id` | Returns a single event by ID. |
+| `PATCH` | `/api/v1/events/:id/processed` | Marks an event as processed. |
+| `DELETE` | `/api/v1/events/:id` | Deletes an event by ID. |
 
 ---
 
@@ -405,10 +409,10 @@ The API currently supports create, read, filtered read, single-record lookup, pr
 
 The event resource now has complete basic CRUD coverage:
 
-| CRUD Operation | Endpoint                      | Status        |
-| -------------- | ----------------------------- | ------------- |
-| Create         | `POST /events`                | `Implemented` |
-| Read many      | `GET /events`                 | `Implemented` |
-| Read one       | `GET /events/:id`             | `Implemented` |
-| Update         | `PATCH /events/:id/processed` | `Implemented` |
-| Delete         | `DELETE /events/:id`          | `Implemented` |
+| CRUD Operation | Endpoint | Status |
+| --- | --- | --- |
+| Create | `POST /api/v1/events` | `Implemented` |
+| Read many | `GET /api/v1/events` | `Implemented` |
+| Read one | `GET /api/v1/events/:id` | `Implemented` |
+| Update | `PATCH /api/v1/events/:id/processed` | `Implemented` |
+| Delete | `DELETE /api/v1/events/:id` | `Implemented` |

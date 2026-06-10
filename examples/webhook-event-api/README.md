@@ -29,7 +29,10 @@ At the recorded checkpoint:
 - README and API reference content were synchronized
 - No backend behavior changes were made during the documentation pass
 
-The screenshots in this folder preserve evidence from that checkpoint.
+The screenshots in this folder preserve evidence from that checkpoint. Because
+this sample does not include the application source, the endpoint inventory is
+limited to routes recorded in the checkpoint documentation and supporting
+screenshots.
 
 ## Tech Stack
 
@@ -60,12 +63,13 @@ The screenshots in this folder preserve evidence from that checkpoint.
 
 ## API Summary
 
-The versioned API uses the `/api/v1` prefix. The root status route remains
-available at `/`.
+The API base URL is `http://localhost:3000/api/v1`. All API endpoints use the
+`/api/v1` version prefix. The unversioned root route serves the application's
+HTML interface and is listed separately for clarity.
 
 | Method | Endpoint | Description |
 | --- | --- | --- |
-| `GET` | `/` | Returns the application root status |
+| `GET` | `/` | Serves the application HTML interface |
 | `GET` | `/api/v1/health` | Returns API health status |
 | `POST` | `/api/v1/events` | Creates an event |
 | `GET` | `/api/v1/events` | Lists and filters events |
@@ -163,6 +167,8 @@ Geofence API routes were not implemented at this checkpoint.
 - The documentation reflects a specific verified checkpoint, not a live build.
 - Version and test claims are tied to the included screenshots and source
   project verification notes.
+- The runnable controllers are not included in this documentation-only sample,
+  so route claims should be rechecked against source before a future release.
 - Authentication, pagination, request logging, deployment configuration, and
   geofence endpoints were not implemented at this checkpoint.
 - Future source changes should update the README, API reference, screenshots,
