@@ -1,5 +1,8 @@
 # Upwork Portfolio Entry
 
+[View the project documentation](README.md) or the
+[API reference](API_REFERENCE.md).
+
 ## Project Title
 
 Webhook Receiver + Event Processing API

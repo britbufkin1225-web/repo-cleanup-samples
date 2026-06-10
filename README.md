@@ -1,279 +1,100 @@
-# Repo Cleanup Samples
+# Repository Cleanup Samples
 
-Before-and-after examples, templates, and checklists for improving GitHub repositories, README files, Markdown documentation, and project presentation.
+A documentation portfolio showing how technical repositories can be made
+clearer, easier to review, and more useful to developers, recruiters, and
+clients.
 
-This repository is a working portfolio sample for GitHub profile cleanup, project README rewrites, backend API documentation, and repository polish.
+This repository contains polished documentation snapshots rather than runnable
+application source code. Each example focuses on project positioning, setup
+clarity, API documentation, screenshots, and repository presentation.
 
----
+## Featured Sample
 
-## Purpose
+### Webhook Receiver and Event Processing API
 
-Many repositories have useful code but weak presentation.
+A portfolio-ready documentation set for a NestJS, TypeScript, Prisma, and
+SQLite backend that receives, validates, stores, filters, and processes
+webhook-style events.
 
-Common problems include:
+The sample includes:
 
-- No clear project summary
-- Missing setup instructions
-- Poor Markdown structure
-- No explanation of the tech stack
-- No project status
-- No API documentation
-- No screenshots or usage notes
-- No clear value for clients, recruiters, or collaborators
+- A project README with overview, stack, features, setup, usage, and status
+- A detailed REST API reference with request and response examples
+- A concise Upwork portfolio entry
+- Five screenshots covering documentation, tests, API output, and schema
+- Clear separation between implemented capabilities and future improvements
 
-This repository demonstrates how rough or incomplete project documentation can be turned into cleaner, more professional GitHub presentation.
-
----
-
-## What This Repository Shows
-
-This repo is designed to show practical documentation and repository cleanup skills, including:
-
-- README structure improvement
-- Markdown formatting
-- Project summary writing
-- Backend API documentation
-- Setup and usage documentation
-- Badge and topic planning
-- Repository audit checklists
-- Before-and-after documentation examples
-- Portfolio-ready project presentation
-
----
+[View the webhook API sample](examples/webhook-event-api/README.md)
 
 ## Repository Structure
 
 ```text
 repo-cleanup-samples/
-├── README.md
-├── samples/
-│   ├── basic-readme-cleanup.md
-│   ├── api-project-readme.md
-│   ├── portfolio-project-summary.md
-│   └── github-profile-readme.md
-└── templates/
-    ├── project-readme-template.md
-    ├── api-docs-template.md
-    └── repo-audit-checklist.md
+|-- examples/
+|   `-- webhook-event-api/
+|       |-- screenshots/
+|       |-- API_REFERENCE.md
+|       |-- README.md
+|       `-- UPWORK_PORTFOLIO_ENTRY.md
+|-- CLEANUP_SUMMARY.md
+`-- README.md
 ```
 
----
+## What The Work Demonstrates
 
-## Sample Documentation Types
+| Area | Documentation improvements |
+| --- | --- |
+| Project overview | Explains what the project does, why it exists, and who it helps |
+| Technical clarity | Identifies the stack, architecture, data model, and limitations |
+| Developer onboarding | Organizes prerequisites, setup, usage, and verification commands |
+| API documentation | Documents endpoints, parameters, payloads, responses, and errors |
+| Portfolio presentation | Highlights outcomes, project status, screenshots, and professional value |
+| Repository hygiene | Corrects broken links, stale paths, duplication, and misleading structure |
 
-### Basic README Cleanup
+## Cleanup Approach
 
-Demonstrates how to improve a simple project README by adding:
+1. Inspect the repository structure and existing documentation.
+2. Verify links, paths, commands, screenshots, and stated project status.
+3. Rewrite the opening sections for fast reviewer comprehension.
+4. Separate project overview, operations, API details, and portfolio copy.
+5. Remove duplicated or outdated information.
+6. Document limitations and future work without overstating completeness.
+7. Validate Markdown formatting and repository navigation.
 
-- Clear project title
-- Short description
-- Purpose section
-- Tech stack
-- Setup instructions
-- Usage notes
-- Project status
+The goal is not decorative formatting. Good repository documentation should
+help a reviewer understand the project, assess its quality, and find the next
+useful action quickly.
 
----
+## Review Checklist
 
-### API Project README
+A portfolio-ready repository should answer:
 
-Demonstrates documentation for backend API projects, including:
-
-- API overview
-- Tech stack
-- Environment setup
-- Installation steps
-- Endpoint summaries
-- Request and response examples
-- Testing notes
-
----
-
-### Portfolio Project Summary
-
-Demonstrates how to explain a technical project in a way that is useful for:
-
-- Recruiters
-- Freelance clients
-- Hiring managers
-- Collaborators
-- Portfolio reviewers
-
-Focus areas include:
-
-- What the project does
-- Why it matters
-- What technologies were used
-- What backend or security concepts it demonstrates
-- What can be improved next
-
----
-
-### GitHub Profile README
-
-Demonstrates sections that can improve a developer profile README, including:
-
-- Professional intro
-- Current focus
-- Skills and tools
-- Featured projects
-- Services
-- Contact information
-- Contribution visuals
-
----
-
-## Repository Cleanup Services Demonstrated
-
-This repository demonstrates cleanup work for:
-
-| Area | Improvements |
-|---|---|
-| README files | Structure, clarity, formatting, badges, usage sections |
-| Backend projects | API docs, endpoint summaries, environment notes |
-| Portfolio projects | Project value, tech stack, status, roadmap |
-| GitHub profiles | Profile layout, featured projects, service positioning |
-| Documentation | Markdown cleanup, checklists, templates, client-ready wording |
-
----
-
-## Repo Audit Checklist
-
-A strong repository should answer these questions quickly:
-
-- What does this project do?
-- Why does it exist?
+- What does the project do?
+- Why was it built?
 - What technologies does it use?
-- How do I install or run it?
-- What features are complete?
-- What features are planned?
-- How is the project organized?
-- What makes it useful or portfolio-worthy?
+- Which features are implemented?
+- How is it installed, run, and tested?
+- What API or command surface does it expose?
+- What is the current project status?
+- Where are screenshots and supporting documents?
+- What limitations or follow-up work remain?
 
-If a repo cannot answer those questions clearly, the documentation needs cleanup. Fancy badges cannot save a confusing repo. Brutal, but true.
+## Project Status
 
----
+**Active documentation portfolio.**
 
-## Example Before / After Improvements
+The webhook API example is the first complete sample. Additional examples and
+reusable templates may be added later, but only existing content is listed in
+the repository structure.
 
-| Before | After |
-|---|---|
-| “This is my project.” | Clear summary explaining what the project does and who it helps |
-| No setup steps | Step-by-step installation and usage instructions |
-| Random file structure | Organized folders and documentation |
-| No tech stack listed | Clear language, framework, database, and tooling sections |
-| No project status | Current status, completed work, and next steps |
-| No API notes | Endpoint summaries and request/response examples |
-| Plain wall of text | Clean Markdown hierarchy with headings, lists, and tables |
+## Suggested GitHub Topics
 
----
-
-## Documentation Process
-
-My typical repository cleanup process:
-
-1. Review the existing README and repo structure
-2. Identify missing or unclear sections
-3. Rewrite the project summary
-4. Organize the tech stack and feature list
-5. Add setup and usage instructions
-6. Improve Markdown formatting
-7. Add API documentation if needed
-8. Add project status and roadmap sections
-9. Improve GitHub repo description and topics
-10. Prepare the repo for portfolio, client, or recruiter review
-
-The goal is not just to make the repo look better. The goal is to make the project easier to understand, trust, and use.
-
----
-
-## Best Use Cases
-
-This kind of cleanup is useful for:
-
-- Developers building a portfolio
-- Students preparing GitHub projects for applications
-- Freelancers improving client-facing repositories
-- Small teams with underdocumented projects
-- Backend/API projects needing clearer documentation
-- Open-source projects needing better onboarding docs
-
----
-
-## Skills Demonstrated
-
-- Markdown documentation
-- GitHub repository organization
-- README writing
-- Backend API documentation
-- Technical editing
-- Project presentation
-- Documentation checklists
-- Developer portfolio polish
-- Security-aware documentation habits
-
----
-
-## Related Focus Areas
-
-This repository supports my broader work in:
-
-- Backend development
-- API design
-- Cybersecurity-aware software
-- Automation tooling
-- Technical documentation
-- GitHub portfolio development
-- Repository cleanup and presentation
-
----
-
-## Planned Repository Contents
-
-This repository is intended to include:
-
-### `samples/`
-
-Example documentation files showing different cleanup styles:
-
-- `basic-readme-cleanup.md`
-- `api-project-readme.md`
-- `portfolio-project-summary.md`
-- `github-profile-readme.md`
-
-### `templates/`
-
-Reusable templates for future documentation work:
-
-- `project-readme-template.md`
-- `api-docs-template.md`
-- `repo-audit-checklist.md`
-
-These files can be used as examples for GitHub cleanup, documentation services, and client-facing portfolio work.
-
----
-
-## Status
-
-Current status: **Active documentation sample repository**
-
-Planned additions:
-
-- More before-and-after README examples
-- Backend API documentation sample
-- GitHub profile README sample
-- Repo audit checklist
-- Project README template
-- API docs template
-- Freelance service examples
-
----
+`documentation`, `technical-writing`, `readme`, `github-portfolio`,
+`repository-cleanup`, `api-documentation`, `markdown`, `developer-experience`
 
 ## Contact
 
 GitHub: [@britbufkin1225-web](https://github.com/britbufkin1225-web)
 
-Open to repository cleanup, README improvement, backend documentation, portfolio polish, and project-based technical documentation work.
-
-
-
+Areas of focus include repository cleanup, README improvement, backend
+documentation, API references, and portfolio presentation.

@@ -1,380 +1,188 @@
-# Webhook Receiver + Event Processing API
+# Webhook Receiver and Event Processing API
 
-**Current backend verification:** 20/20 tests passing · API reference added · README/API documentation synced
+A portfolio documentation snapshot for a NestJS backend that receives,
+validates, stores, filters, and processes webhook-style event records with
+Prisma and SQLite.
 
-A NestJS backend API for receiving, validating, storing, and reviewing webhook-style event records using Prisma and SQLite.
+> This folder contains the polished documentation and screenshots from the
+> project checkpoint. It does not include the runnable application source.
 
-This project is designed as a portfolio-ready backend system that demonstrates API design, request handling, validation, database persistence, documentation, testing, and security-aware development practices.
+## Project Overview
 
----
+Modern applications use webhooks to exchange event notifications between
+services. This project demonstrates a compact receiver that validates incoming
+event data, stores records, exposes review and filtering endpoints, tracks
+processing status, and returns consistent success and error responses.
 
-## Project Purpose
-
-Modern applications often rely on webhooks to send event notifications between services. This project simulates a production-style webhook receiver that accepts incoming event data, validates request payloads, stores event records, and exposes API endpoints for reviewing event activity.
-
-The goal is to build a compact, professional backend API that demonstrates real-world backend development patterns without unnecessary complexity.
-
----
-
-## What This Project Demonstrates
-
-This project demonstrates practical backend development skills, including:
-
-* Modular NestJS application structure
-* REST API endpoint design
-* DTO-based request validation
-* SQLite database persistence
-* Prisma ORM usage
-* Event filtering and lookup workflows
-* Processed/unprocessed status tracking
-* Aggregate summary reporting
-* Standardized success and error response shapes
-* Controller and service test coverage
-* Markdown-based technical documentation
-* Git-based project workflow and repository hygiene
-
----
+The documentation is organized to show both backend implementation skills and
+the repository-polish work needed to make those skills easy to evaluate.
 
 ## Project Status
 
-Current status: **Portfolio-ready checkpoint**
+**Portfolio-ready documentation checkpoint, version 0.2.0.**
 
-This project has reached a stable v0.2.0 closeout checkpoint. Core backend functionality, API documentation, test coverage, and local verification have been completed.
+At the recorded checkpoint:
 
-Development is currently paused at a clean portfolio-ready state. Future improvements may include authentication, pagination, dashboard views, deployment configuration, and expanded webhook provider examples.
+- 4 of 4 test suites passed
+- 20 of 20 tests passed
+- Core event CRUD and summary workflows were implemented
+- README and API reference content were synchronized
+- No backend behavior changes were made during the documentation pass
 
-### Current Verification Status
-
-| Check                                                | Status     |
-| ---------------------------------------------------- | ---------- |
-| Test suite                                           | 20/20 PASS |
-| Test suites                                          | 4/4 PASS   |
-| API reference documentation                          | Added      |
-| README/API documentation                             | Synced     |
-| Git working tree after latest documentation workflow | Clean      |
-
----
-
-## Verification Status
-
-The project is currently verified through automated testing, documentation review, and clean repository status checks.
-
-### Latest Verification Checkpoint
-
-| Area                         | Result    |
-| ---------------------------- | --------- |
-| Unit and controller tests    | PASS      |
-| Service logic tests          | PASS      |
-| Error response documentation | Updated   |
-| API reference documentation  | Added     |
-| README API section           | Updated   |
-| README/API consistency audit | Completed |
-| Git working tree             | Clean     |
-
-### Verification Summary
-
-The Webhook Receiver + Event Processing API currently has passing test coverage for the implemented backend feature set, including event creation, event retrieval, filtering, processed-status updates, summary behavior, validation handling, and standardized error responses.
-
-Current verification result:
-
-```text
-Test suites: 4/4 PASS
-Tests: 20/20 PASS
-Git working tree: clean
-Documentation status: updated
-Backend code changes made: none
-
-## Version
-
-Current version: **v0.2.0**
-
-Base API version: `/api/v1`
-
-Version `v0.1.0` represents the initial working backend foundation, including event creation, event retrieval, filtering, detail lookup, processed status updates, event deletion, summary reporting, standardized error responses, documentation updates, and test coverage.
-
----
-
-## Core Features
-
-### Implemented
-
-* Basic application root response
-* Webhook-style event creation
-* Request payload validation
-* SQLite database persistence
-* Event history retrieval
-* Event filtering by query parameters
-* Event detail lookup
-* Event processed/unprocessed status tracking
-* Event deletion
-* Event summary reporting
-* Event summary aggregation by processing status, source, and event type
-* Standardized event API response structure
-* Standardized API error response structure
-* Not-found handling for missing events
-* Bad-request handling for invalid query filters
-* Geofence database model foundation
-* Environment variable configuration
-* Structured project documentation
-* Jest-based testing workflow
-* Events controller test coverage
-* Events service test coverage
-
-### Planned
-
-* Expanded CRUD documentation
-* Event type classification
-* Request logging improvements
-* Security-conscious request handling improvements
-* Expanded testing documentation
-* Database schema notes
-* Development workflow notes
-
----
+The screenshots in this folder preserve evidence from that checkpoint.
 
 ## Tech Stack
 
-| Area            | Technology   |
-| --------------- | ------------ |
-| Runtime         | Node.js      |
-| Framework       | NestJS       |
-| Language        | TypeScript   |
-| Database        | SQLite       |
-| ORM             | Prisma       |
-| Testing         | Jest         |
-| Documentation   | Markdown     |
-| Version Control | Git + GitHub |
+| Area | Technology |
+| --- | --- |
+| Runtime | Node.js |
+| Framework | NestJS |
+| Language | TypeScript |
+| Database | SQLite |
+| ORM | Prisma |
+| Validation | NestJS DTO validation |
+| Testing | Jest |
+| Documentation | Markdown |
 
----
+## Features
 
-## API Overview
+- Webhook-style event creation with request validation
+- Event history and single-record lookup
+- Filtering by source, event type, and processed status
+- Processed-status updates
+- Event deletion
+- Aggregate event summaries
+- SQLite persistence through Prisma
+- Standardized API error responses
+- Environment-based configuration
+- Controller and service tests
+- Geofence schema foundation without exposed geofence routes
 
-Unless otherwise noted, endpoint paths are shown relative to the base API version:
+## API Summary
 
-```text
-/api/v1
+The versioned API uses the `/api/v1` prefix. The root status route remains
+available at `/`.
 
-The root application route is available outside the API version prefix:
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| `GET` | `/` | Returns the application root status |
+| `GET` | `/api/v1/health` | Returns API health status |
+| `POST` | `/api/v1/events` | Creates an event |
+| `GET` | `/api/v1/events` | Lists and filters events |
+| `GET` | `/api/v1/events/summary` | Returns aggregate event statistics |
+| `GET` | `/api/v1/events/:id` | Returns one event |
+| `PATCH` | `/api/v1/events/:id/processed` | Marks an event as processed |
+| `DELETE` | `/api/v1/events/:id` | Deletes an event |
 
-```text
-GET /
-```
+See the [API reference](API_REFERENCE.md) for payloads, filters, response
+shapes, and error examples.
 
-The API currently supports event creation, event listing, event filtering, event detail lookup, processed status updates, event deletion, event summary statistics, and standardized error responses.
+## Setup Reference
 
-### Current Endpoints
-
-| Method   | Endpoint                | Description                           |
-| -------- | ----------------------- | ------------------------------------- |
-| `GET`    | `/`                     | Basic application root response.      |
-| `POST`   | `/events`               | Creates a new event.                  |
-| `GET`    | `/events`               | Lists events with optional filtering. |
-| `GET`    | `/events/summary`       | Returns event summary statistics.     |
-| `GET`    | `/events/:id`           | Returns a single event by ID.         |
-| `PATCH`  | `/events/:id/processed` | Marks an event as processed.          |
-| `DELETE` | `/events/:id`           | Deletes an event by ID.               |
-
-Full endpoint details are available in the dedicated [API Reference](docs/API_REFERENCE.md).
-
----
-
-## Documentation
-
-Additional project documentation is available in the `docs` folder.
-
-| Document                                                                             | Description                                                                                               |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| [API Reference](docs/API_REFERENCE.md)                                               | Full endpoint reference, request examples, response shapes, filtering options, and standard error format. |
-| [Documentation Index](docs/README.md)                                                | Index of available project documentation.                                                                 |
-| [Environment Variables](docs/environment-variables.md)                               | Environment variable setup notes.                                                                         |
-| [Project Overview](docs/project-overview.md)                                         | Higher-level project overview and purpose.                                                                |
-| [Session 7.5 — Documentation and Repository Polish](docs/session-7-5-repo-polish.md) | Earlier documentation and repository polish notes.                                                        |
-
----
-
-## Database Models
-
-Current Prisma models include:
-
-* `Event`
-* `Geofence`
-
-### Event Model
-
-The `Event` model stores incoming webhook-style records and tracks basic event metadata.
-
-Current event fields include:
-
-* `id`
-* `source`
-* `eventType`
-* `payload`
-* `processed`
-* `receivedAt`
-* `processedAt`
-* `createdAt`
-* `updatedAt`
-
-### Geofence Model
-
-The `Geofence` model supports location-based records with coordinates, radius, active status, and timestamps.
-
-Current geofence fields include:
-
-* `id`
-* `name`
-* `description`
-* `latitude`
-* `longitude`
-* `radius`
-* `isActive`
-* `createdAt`
-* `updatedAt`
-
-Geofence API routes are not currently exposed in the application source code.
-
----
-
-## Testing Status
-
-Current test status:
-
-* Test suites: 4 passed / 4 total
-* Tests: 20 passed / 20 total
-
-### Current Tested Areas
-
-* App controller default behavior
-* Events controller response handling
-* Events controller response metadata
-* Events controller query validation
-* Events controller delete response handling
-* Events service creation behavior
-* Events service list retrieval behavior
-* Events service filtering behavior
-* Events service single-record lookup behavior
-* Events processed status update behavior
-* Events delete behavior
-* Events not-found error handling
-* Event summary aggregation behavior
-* Standardized error response behavior
-
-### Run Tests
-
-```bash
-npm test
-```
-
----
-
-## Getting Started
-
-### Install Dependencies
+These commands document the original application workflow. They require the
+full source project and cannot be run from this documentation-only sample.
 
 ```bash
 npm install
-```
-
-### Configure Environment Variables
-
-Create a local `.env` file based on the example file:
-
-```bash
 cp .env.example .env
-```
-
-### Run Database Setup
-
-```bash
 npx prisma migrate dev
-```
-
-### Start the Development Server
-
-```bash
 npm run start:dev
 ```
 
-### Run the Test Suite
+The original development server used:
+
+```text
+http://localhost:3000
+```
+
+Run the original project test suite with:
 
 ```bash
 npm test
 ```
 
----
+## Usage Example
 
-## Repository Structure
+Create an event:
 
-```text
-webhook-event-api/
-├── docs/           # Project documentation
-├── generated/      # Generated Prisma client output
-├── prisma/         # Prisma schema and migrations
-├── src/            # NestJS application source code
-├── test/           # Test files
-├── .env.example    # Example environment variables
-├── README.md       # Project overview
-└── package.json    # Project scripts and dependencies
+```bash
+curl -X POST http://localhost:3000/api/v1/events \
+  -H "Content-Type: application/json" \
+  -d '{
+    "source": "stripe",
+    "eventType": "payment.created",
+    "payload": "{\"amount\":1000}"
+  }'
 ```
 
----
+Filter unprocessed events:
 
-## Portfolio Value
+```text
+GET http://localhost:3000/api/v1/events?source=stripe&processed=false
+```
 
-This project is intended to demonstrate:
+## Data Model
 
-* Backend API structure
-* Modular NestJS architecture
-* Request and response handling
-* Consistent API response design
-* Consistent API error response design
-* Database-backed event storage
-* Prisma ORM usage
-* SQLite persistence
-* Environment configuration
-* DTO-based validation
-* Query parameter filtering
-* Error handling patterns
-* CRUD-style endpoint design
-* Testable service and controller design
-* Professional documentation habits
-* Security-aware backend thinking
+The recorded Prisma schema included:
 
----
+- `Event`: webhook source, event type, payload, processing state, and timestamps
+- `Geofence`: location, radius, active state, and timestamps
 
-## Current Limitations
+Geofence API routes were not implemented at this checkpoint.
 
-* Geofence API routes are planned but not currently exposed.
-* Authentication and authorization are not yet implemented.
-* Request logging and audit-style tracking are planned future improvements.
-* The project currently uses SQLite for local development and portfolio demonstration.
+## Screenshots
 
----
+### README Overview
 
-## Future Improvements
+![README overview](screenshots/01-readme-overview.png)
 
-Planned improvements include:
+### API Reference
 
-* Expanded CRUD endpoint documentation
-* Request logging
-* Authentication or API key protection
-* Expanded validation coverage
-* Geofence controller and service implementation
-* Additional database documentation
-* Expanded testing notes
-* Deployment notes
-* Example API usage scripts
+![API reference](screenshots/02-api-reference.png)
 
----
+### Passing Tests
+
+![Passing test suite](screenshots/03-tests-pass.png)
+
+### API Response
+
+![Example API response](screenshots/04-api-response.png)
+
+### Prisma Schema
+
+![Prisma schema](screenshots/05-prisma-schema.png)
+
+## Documentation
+
+- [API reference](API_REFERENCE.md)
+- [Upwork portfolio entry](UPWORK_PORTFOLIO_ENTRY.md)
+- [Repository cleanup summary](../../CLEANUP_SUMMARY.md)
 
 ## Development Notes
 
-This project is being built in small, documented sessions. Each session focuses on one clear improvement so the repository remains clean, understandable, and easy to review.
+- The documentation reflects a specific verified checkpoint, not a live build.
+- Version and test claims are tied to the included screenshots and source
+  project verification notes.
+- Authentication, pagination, request logging, deployment configuration, and
+  geofence endpoints were not implemented at this checkpoint.
+- Future source changes should update the README, API reference, screenshots,
+  and verification counts together.
 
-Private local workflow notes and shorthand references are intentionally excluded from version control.
+## Portfolio Value
 
----
+This example demonstrates:
+
+- Modular NestJS API design
+- DTO validation and consistent error handling
+- Prisma-backed persistence
+- CRUD, filtering, and aggregation workflows
+- Controller and service testing
+- Technical documentation structure
+- Honest project status and limitation reporting
+- Reviewer-friendly repository presentation
 
 ## License
 
-This project is licensed under the terms included in the repository license file.
+The original project documentation states that its source repository includes
+a license. This documentation sample does not grant separate rights to the
+original application source.

@@ -4,6 +4,8 @@ Detailed API reference for the Webhook Receiver + Event Processing API.
 
 This document describes the available API endpoints, request formats, response shapes, filtering options, and standard error response format.
 
+[Back to the project overview](README.md)
+
 ---
 
 ## Base URL
